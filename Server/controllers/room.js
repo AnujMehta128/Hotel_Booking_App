@@ -112,10 +112,10 @@ async function getAllOwnerRoomsForOneHotel(req,res)
 async function toggleRoomAvailablity(req,res)
 {
     try {
-        const roomId=req.params.roomId;
+        const {roomId}=req.body;
         const roomData=await Room.findById(roomId).populate('hotel');
         
-        if(!roomData.hotel.hotelOwner.toString()!==req.user.id)
+        if(roomData.hotel.hotelOwner.toString()!==req.user.id)
         {
             return res.json({
                 success:false,

@@ -141,7 +141,7 @@ async function handleRegisterNewHotelRequest(req,res)
             }
        */ //}
 
-        await Hotel.create({
+       await Hotel.create({
             hotelName: hotelName.trim().toLowerCase(),
             houseNumber,
             buildingName,
@@ -158,7 +158,7 @@ async function handleRegisterNewHotelRequest(req,res)
 
         await User.findByIdAndUpdate(hotelOwner,{role:"hotelOwner"});
 
-        const token=jwt.sign({_id:hotelId},process.env.JWT_SECRET,{
+      /*  const token=jwt.sign({_id:hotelId},process.env.JWT_SECRET,{
             expiresIn:'7d'
         });
 
@@ -167,10 +167,10 @@ async function handleRegisterNewHotelRequest(req,res)
             secure:process.env.NODE_ENV='production',
             sameSite:process.env.NODE_ENV==='production'?'none':'strict',
             maxAge:7*24*60*60*1000
-        });
+        });*/
        
        
-       
+       await User.findByIdAndUpdate(hotelOwner,{role:"hotelOwner"});
        
         return res.json({
             success:true,
@@ -189,6 +189,28 @@ async function handleRegisterNewHotelRequest(req,res)
 }
 
 
+async function handleOwnerHotel(req,res)
+{
+     try {
+         
+        const userId=req.user.id;
+        const hotels=await Hotel.find({hotelOwner:userId});
+        return res.json({
+            success:true,
+            hotels
+        })
+
+
+
+     } catch (error) {
+        return res.json({
+            success:false,
+            message:error.message
+        })
+     }
+}
+
 module.exports={
-    handleRegisterNewHotelRequest
+    handleRegisterNewHotelRequest,
+    handleOwnerHotel
 }

@@ -4,7 +4,7 @@ const roomSchema=new Schema({
   
    hotel:{
     type:Schema.Types.ObjectId,
-    ref:'Hotel',
+    ref:'hotel',
     required:true
    },
    roomType:{

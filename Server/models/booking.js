@@ -8,12 +8,12 @@ const bookingSchema=new mongoose.Schema({
         ref:'user',
         required:true
     },
-    hotelId:{
+    hotel:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'hotel',
         required:true
     },
-    roomId:{
+    room:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'room',
         required:true

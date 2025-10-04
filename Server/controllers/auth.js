@@ -2,6 +2,8 @@ const  User = require("../models/User");
 const bcrypt=require('bcrypt');
 const jwt =require('jsonwebtoken'); 
 const { transporter } = require("../configs/nodemailer");
+const { EMAIL_VERIFY_TEMPLATE,PASSWORD_RESET_TEMPLATE } =require("../configs/emailTemplates");
+
 async function handleRegisterNewUserRequest(req,res)
 {
     //console.log("req.body:", req.body);
@@ -22,7 +24,7 @@ async function handleRegisterNewUserRequest(req,res)
       if(exsistingUser)
       {
         return res.json({
-            sucsess:false,
+            success:false,
             message: 'User Already Exists'
         })
       }
@@ -199,7 +201,8 @@ async function handleSendOTPRequestForVerification(req,res)
             to: user.email,
             subject: "OTP for Email Verification at Hotel Booking Application",
             text: `Your OTP (One Time Password) to verify your Email Address ${user.email} is
-            ${user.verifyOTP} it expires in 2 mins`
+            ${user.verifyOTP} it expires in 2 mins `,
+            html:EMAIL_VERIFY_TEMPLATE.replace("{{otp}}",user.verifyOTP).replace("{{email}}",user.email)
         }
         await transporter.sendMail(mailOptions);
 
@@ -315,7 +318,8 @@ async function handleSendOTPForPasswordReset(req,res)
         from:process.env.SENDER_EMAIL,
         to:email,
         subject:"Password Reset OTP For Hotel Booking Website",
-        text:` ${user.userName} Your OTP for resetting password is ${OTP} it expires in 2 mins`
+        text:` ${user.userName} Your OTP for resetting password is ${OTP} it expires in 2 mins`,
+        html:PASSWORD_RESET_TEMPLATE.replace("{{otp}}",user.resetOTP).replace("{{email}}",email)
     }
     
 
@@ -397,6 +401,24 @@ async function handleVerificationOfOTPSendForPasswordReset(req,res)
 
 }
 
+async function isAuthenticated(req,res){
+   
+    try {
+
+        return res.json({
+            success:true
+        })
+        
+    } catch (error) {
+
+        return res.json({
+            success:false,
+            message:error.message
+        })
+        
+    }
+}
+
 
 
 module.exports={
@@ -406,5 +428,6 @@ module.exports={
    handleSendOTPRequestForVerification,
    handleVerificationOfOTP,
    handleSendOTPForPasswordReset,
-   handleVerificationOfOTPSendForPasswordReset
+   handleVerificationOfOTPSendForPasswordReset,
+   isAuthenticated
 }

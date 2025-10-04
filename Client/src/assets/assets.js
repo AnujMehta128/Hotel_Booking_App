@@ -37,7 +37,8 @@ import listIcon from "./listIcon.svg";
 import uploadArea from "./uploadArea.svg";
 import totalBookingIcon from "./totalBookingIcon.svg";
 import totalRevenueIcon from "./totalRevenueIcon.svg";
-
+import emailIcon from "./emailIcon.svg"
+import lockIcon from "./lockIcon.svg"
 
 export const assets = {
     logo,
@@ -72,6 +73,8 @@ export const assets = {
     uploadArea,
     totalBookingIcon,
     totalRevenueIcon,
+    emailIcon,
+    lockIcon
 }
 
 export const cities = [
@@ -130,11 +133,11 @@ export const userDummyData = {
 // Hotel Dummy Data
 export const hotelDummyData = {
     "_id": "67f76393197ac559e4089b72",
-    "name": "Urbanza Suites",
-    "address": "Main Road  123 Street , 23 Colony",
-    "contact": "+0123456789",
-    "owner": userDummyData,
-    "city": "New York",
+    "hotelName": "Urbanza Suites",
+    "hotelAddress": "Main Road  123 Street , 23 Colony",
+    "hotelContact": "+0123456789",
+    "hotelOwner": userDummyData,
+    "hotelCity": "New York",
     "createdAt": "2025-04-10T06:22:11.663Z",
     "updatedAt": "2025-04-10T06:22:11.663Z",
     "__v": 0

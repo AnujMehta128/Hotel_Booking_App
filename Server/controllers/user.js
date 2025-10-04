@@ -16,9 +16,12 @@ async function handleGetUserRequest(req,res)
     // console.log(user);
     return res.json({
         success:true,
-        message:{
+        userData:{
             role:user.role,
-            recentSearchCities:user.recentSearchCities
+            recentSearchCities:user.recentSearchCities,
+            isAccountVerified:user.isAccountVerified,// for the login icon
+            userName:user.userName// for login icon
+
         }
     })
 }

@@ -9,7 +9,7 @@ const router=Router();
 router.post('/:hotelId/register-new-room', upload.array("images",4),authenticateUser,handleCreateRoomRequest);
 router.get('/',getAllRooms);
 router.get('/:hotelId/all-owner-rooms',authenticateUser,getAllOwnerRoomsForOneHotel);
-router.put('/:roomId/update-room-availability',authenticateUser,toggleRoomAvailablity)
+router.post('/update-room-availability',authenticateUser,toggleRoomAvailablity)
 
 module.exports={
     router
