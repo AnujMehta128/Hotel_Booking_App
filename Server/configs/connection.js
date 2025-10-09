@@ -1,11 +1,20 @@
 const mongoose=require('mongoose');
 
 
-function handleMongodbConnectionRequest()
+async function handleMongodbConnectionRequest()
 {
-    mongoose.connect(`${process.env.MONGODB_URL}/hotel-booking-application`)
-    .then(()=>{console.log("mongodb connected")})
-    .catch((err)=>{console.log("mongo error :",err)});
+   
+   try {
+     mongoose.connection.on('connected',()=>{console.log("mongodb connected")});
+     await mongoose.connect(`${process.env.MONGODB_URL}/hotel-booking-application`)
+
+   
+    } catch (error) {
+       console.log(error.message); 
+   }
+   
+
+
 
 }
 

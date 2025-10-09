@@ -21,7 +21,7 @@ const allowedOrigins=['http://localhost:5173','https://quickstay-smoky-mu.vercel
 
 app.use(cors({origin:allowedOrigins,credentials:true}));
 app.use(express.json());
-app.use(cookieparser())
+app.use(cookieparser());
 
 handleMongodbConnectionRequest();
 connectClodinary();
