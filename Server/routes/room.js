@@ -1,7 +1,7 @@
 const {Router}=require('express');
 //const { authenticateHotel } = require('../middleware/authentication');
 const { handleCreateRoomRequest, getAllRooms, getAllOwnerRoomsForOneHotel, toggleRoomAvailablity } = require('../controllers/room');
-const { upload } = require('../middleware/uploadMiddleware');
+const { upload } = require('../middleware/uploadmiddleware');
 const { authenticateUser } = require('../middleware/authentication');
 
 const router=Router();
