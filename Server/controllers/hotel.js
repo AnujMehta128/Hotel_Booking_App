@@ -1,5 +1,5 @@
 const { Hotel } = require("../models/hotel");
-const User = require("../models/User");
+const User = require("../models/user");
 const stringSimilarity=require('string-similarity');
 const jwt=require('jsonwebtoken');
 

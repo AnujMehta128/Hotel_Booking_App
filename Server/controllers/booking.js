@@ -2,7 +2,7 @@ const { transporter } = require("../configs/nodemailer");
 const { Booking } = require("../models/booking");
 const { Hotel } = require("../models/hotel");
 const { Room } = require("../models/room");
-const User = require("../models/User");
+const User = require("../models/user");
 
 async function checkAvailablity(checkInDate,checkOutDate,room){
  
