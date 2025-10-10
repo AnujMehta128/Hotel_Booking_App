@@ -23,7 +23,16 @@ app.use(cors({origin:allowedOrigins,credentials:true}));
 app.use(express.json());
 app.use(cookieparser());
 
-handleMongodbConnectionRequest();
+/*const connectDB=async()=>{
+    try {
+        await handleMongodbConnectionRequest();
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+const connect=await connectDB();*/
+
+
 connectClodinary();
 
 
@@ -37,7 +46,16 @@ app.use('/hotel',hotelRouter)
 app.use('/room',roomRouter) 
 app.use('/booking',bookingRouter);
 
+(async () => {
+  try {
+    await handleMongodbConnectionRequest();
+    console.log('✅ MongoDB connected successfully');
 
-app.listen(PORT,(()=>{
-    console.log("server started");
-}))
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error('❌ MongoDB connection failed:', error.message);
+    process.exit(1); // Prevent running without DB
+  }
+})();
