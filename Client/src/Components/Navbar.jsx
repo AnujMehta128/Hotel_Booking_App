@@ -7,7 +7,7 @@ import axios from 'axios';
 const Navbar = () => {
     const navLinks = [
         { name: 'Home', path: '/' },
-        { name: 'Hotels', path: '/rooms' },
+        { name: 'Hotels', path: '/room' },
         { name: 'Experience', path: '/' },
         { name: 'About', path: '/' },
     ];

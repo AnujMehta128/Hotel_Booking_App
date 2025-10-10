@@ -43,8 +43,8 @@ const App=()=>{
 
       <Routes>
         <Route path='/' element={<Home/>}></Route>
-         <Route path='/rooms' element={<AllRooms/>}></Route>
-        <Route path='/rooms/:id' element={<RoomDetails/>}></Route>
+         <Route path='/room' element={<AllRooms/>}></Route>
+        <Route path='/room/:id' element={<RoomDetails/>}></Route>
         <Route path='/mybookings' element={<MyBookings/>}></Route>
         <Route path='/owner' element={<Layout/>}>
             <Route index element={<Dashboard/>}/>
