@@ -49,13 +49,13 @@ app.use('/booking',bookingRouter);
 (async () => {
   try {
     await handleMongodbConnectionRequest();
-    console.log('✅ MongoDB connected successfully');
+    console.log('MongoDB connected successfully');
 
     app.listen(PORT, () => {
-      console.log(`🚀 Server running on port ${PORT}`);
+      console.log(`Server running on port ${PORT}`);
     });
   } catch (error) {
-    console.error('❌ MongoDB connection failed:', error.message);
+    console.error(' MongoDB connection failed:', error.message);
     process.exit(1); // Prevent running without DB
   }
 })();

@@ -14,7 +14,7 @@ const Hero = () => {
 
     const onSearch=async(e)=>{
      e.preventDefault();
-     navigate(`/rooms?destination=${destination}`)
+     navigate(`/room?destination=${destination}`)
      // call api to save recent search cities
      axios.defaults.withCredentials=true;
 

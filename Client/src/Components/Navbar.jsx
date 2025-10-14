@@ -113,7 +113,7 @@ const {userData,backendURL,setUserData,setIsLoggedIn ,isOwner,setShowHotelRegist
                     {/* is user data is availabel only then dashboard button appears if user data is there but user is not hthe owner list your hotel button appears 
                     else dashboard button appears */}
 
-                    {userData &&
+                    {userData && isOwner &&
                     <button className={`border px-4 py-1 text-sm font-light rounded-full cursor-pointer ${isScrolled ? 'text-black' : 'text-white'} transition-all`} onClick={()=> isOwner ? navigate('/owner'):setShowHotelRegistration(true)}>
                         {isOwner ? 'Dashboard' :'List your hotel'} 
                     </button>

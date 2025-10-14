@@ -167,7 +167,7 @@ const AllRooms=()=>{
                         
                         <div className='md:w-1/2 flex flex-col gap-2 '>
                             <p className='text-gray-500'>{room.hotel.hotelCity}</p>
-                            <p  onClick={() => {navigate(`/rooms/${room._id}`),scrollTo(0,0)}}className='text-gary-800 text-3xl font-playfair cursor-pointer'>{room.hotel.hotelName}</p>
+                            <p  onClick={() => {navigate(`/room/${room._id}`),scrollTo(0,0)}}className='text-gary-800 text-3xl font-playfair cursor-pointer'>{room.hotel.hotelName}</p>
                           
                           <div className='flex items-center'>
                             <StarRating/>
@@ -183,7 +183,7 @@ const AllRooms=()=>{
                             {room.amenities.map((item,index)=>(
                                 <div key={index} className='flex items-center gap-2 px-3 py-2 rounded-lg bg-[#F5F5FF]/70'>
                                     <img src={facilityIcons[item]} alt=""  className='w-5 h-5'/>
-                                    <p text-xs>{item}</p>
+                                    <p className='text-xs'>{item}</p>
                                 </div>
                             ))}
                           </div>
